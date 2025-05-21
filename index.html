@@ -5,606 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artisan Connect - Bridging Local Artisans with Global Buyers</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Custom Tailwind-like Color Palette */
-        :root {
-            --hot-pink: #ec4899;
-            --bonbon-pink: #f472b6;
-            --orange-peel: #ff9a00;
-            --peach-echo: #ffb6b6;
-            --spectra-yellow: #facc15;
-            --brook-green: #84cc16;
-            --parrot-green: #22c55e;
-            --island-paradise: #2dd4bf;
-            --riverside-blue: #06b6d4;
-            --estate-blue: #3b82f6;
-            --grey-blue: #64748b;
-            --pastel-yellow: #fef08a;
-            --lemon-fizz-yellow: #fde047;
-        }
-
-        /* Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8fafc;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header Styles */
-        header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--hot-pink);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-icon {
-            margin-right: 0.5rem;
-            color: var(--orange-peel);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--grey-blue);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--hot-pink);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--grey-blue);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--peach-echo), var(--pastel-yellow));
-            padding: 5rem 0;
-            border-radius: 0 0 2rem 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .hero-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: #1e293b;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin-bottom: 2rem;
-            color: #475569;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-
-        .btn-primary {
-            background-color: var(--hot-pink);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: #db2777;
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background-color: white;
-            color: var(--hot-pink);
-            border-color: var(--hot-pink);
-        }
-
-        .btn-secondary:hover {
-            background-color: #fce7f3;
-            transform: translateY(-2px);
-        }
-
-        /* Features Section */
-        .features {
-            padding: 4rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 3rem;
-            color: #1e293b;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: white;
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-align: center;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--hot-pink);
-        }
-
-        .feature-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            color: #1e293b;
-        }
-
-        .feature-card p {
-            color: #64748b;
-        }
-
-        /* Marketplace Page */
-        .marketplace {
-            padding: 2rem 0 4rem;
-        }
-
-        .filters {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            margin-bottom: 2rem;
-        }
-
-        .filter-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .filter-group {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .filter-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: #475569;
-        }
-
-        .filter-group select, .filter-group input {
-            width: 100%;
-            padding: 0.5rem;
-            border: 1px solid #e2e8f0;
-            border-radius: 0.5rem;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .filter-group input[type="range"] {
-            padding: 0;
-        }
-
-        .range-value {
-            font-size: 0.875rem;
-            color: var(--grey-blue);
-            margin-top: 0.5rem;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 1rem;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .product-image {
-            height: 200px;
-            background-color: #f1f5f9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--grey-blue);
-        }
-
-        .product-details {
-            padding: 1.5rem;
-        }
-
-        .product-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #1e293b;
-        }
-
-        .artisan-name, .product-region {
-            font-size: 0.875rem;
-            color: #64748b;
-            margin-bottom: 0.25rem;
-        }
-
-        .product-region {
-            display: flex;
-            align-items: center;
-        }
-
-        .product-region svg {
-            margin-right: 0.25rem;
-        }
-
-        .product-btn {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.5rem 1rem;
-            background-color: var(--pastel-yellow);
-            color: #854d0e;
-            border-radius: 0.5rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-
-        .product-btn:hover {
-            background-color: var(--lemon-fizz-yellow);
-        }
-
-        /* Artisan Onboarding Page */
-        .onboarding {
-            padding: 2rem 0 4rem;
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            width: 2px;
-            background-color: var(--peach-echo);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -1px;
-        }
-
-        .timeline-step {
-            position: relative;
-            margin-bottom: 3rem;
-        }
-
-        .timeline-step:nth-child(odd) {
-            padding-right: 50%;
-        }
-
-        .timeline-step:nth-child(even) {
-            padding-left: 50%;
-        }
-
-        .timeline-content {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            position: relative;
-        }
-
-        .timeline-icon {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background-color: var(--hot-pink);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .timeline-step:nth-child(odd) .timeline-icon {
-            right: -25px;
-            top: 20px;
-        }
-
-        .timeline-step:nth-child(even) .timeline-icon {
-            left: -25px;
-            top: 20px;
-        }
-
-        .timeline-content h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-            color: #1e293b;
-        }
-
-        .timeline-content p {
-            color: #64748b;
-            margin-bottom: 1rem;
-        }
-
-        .video-placeholder {
-            background-color: #f1f5f9;
-            height: 200px;
-            border-radius: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--grey-blue);
-            margin-top: 1rem;
-        }
-
-        .language-toggle {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-        }
-
-        .language-btn {
-            padding: 0.5rem 1rem;
-            background: none;
-            border: 1px solid #e2e8f0;
-            font-family: 'Poppins', sans-serif;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .language-btn:first-child {
-            border-radius: 0.5rem 0 0 0.5rem;
-        }
-
-        .language-btn:last-child {
-            border-radius: 0 0.5rem 0.5rem 0;
-        }
-
-        .language-btn.active {
-            background-color: var(--hot-pink);
-            color: white;
-            border-color: var(--hot-pink);
-        }
-
-        /* Footer */
-        footer {
-            background-color: #1e293b;
-            color: white;
-            padding: 3rem 0 1.5rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-column h3 {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-links a {
-            color: #cbd5e1;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.25rem;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: var(--peach-echo);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid #334155;
-            color: #94a3b8;
-            font-size: 0.875rem;
-        }
-
-        /* Page Navigation */
-        .page {
-            display: none;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        /* Mobile Styles */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background-color: white;
-                flex-direction: column;
-                padding: 1rem;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links li {
-                margin: 0.5rem 0;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2.25rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
-
-            .timeline::before {
-                left: 31px;
-            }
-
-            .timeline-step:nth-child(odd),
-            .timeline-step:nth-child(even) {
-                padding-left: 80px;
-                padding-right: 0;
-            }
-
-            .timeline-step:nth-child(odd) .timeline-icon,
-            .timeline-step:nth-child(even) .timeline-icon {
-                left: 6px;
-                right: auto;
-            }
-        }
-
-        /* Utility Classes */
-        .text-center {
-            text-align: center;
-        }
-
-        .mt-1 { margin-top: 0.25rem; }
-        .mt-2 { margin-top: 0.5rem; }
-        .mt-3 { margin-top: 0.75rem; }
-        .mt-4 { margin-top: 1rem; }
-        .mt-5 { margin-top: 1.25rem; }
-        .mt-6 { margin-top: 1.5rem; }
-        .mt-8 { margin-top: 2rem; }
-        .mt-10 { margin-top: 2.5rem; }
-
-        .mb-1 { margin-bottom: 0.25rem; }
-        .mb-2 { margin-bottom: 0.5rem; }
-        .mb-3 { margin-bottom: 0.75rem; }
-        .mb-4 { margin-bottom: 1rem; }
-        .mb-5 { margin-bottom: 1.25rem; }
-        .mb-6 { margin-bottom: 1.5rem; }
-        .mb-8 { margin-bottom: 2rem; }
-        .mb-10 { margin-bottom: 2.5rem; }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Header -->
@@ -617,11 +18,11 @@
                 </a>
                 <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
                 <ul class="nav-links" id="navLinks">
-                    <li><a href="#" onclick="showPage('home')">Home</a></li>
-                    <li><a href="#" onclick="showPage('marketplace')">Marketplace</a></li>
-                    <li><a href="#" onclick="showPage('onboarding')">For Artisans</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#" onclick="showPage('home')" data-i18n="nav.home">Home</a></li>
+                    <li><a href="#" onclick="showPage('marketplace')" data-i18n="nav.marketplace">Marketplace</a></li>
+                    <li><a href="#" onclick="showPage('onboarding')" data-i18n="nav.artisans">For Artisans</a></li>
+                    <li><a href="#" data-i18n="nav.about">About Us</a></li>
+                    <li><a href="#" data-i18n="nav.contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -634,11 +35,11 @@
             <section class="hero">
                 <div class="container">
                     <div class="hero-content">
-                        <h1>Discover Authentic Handmade Treasures</h1>
-                        <p>Connect directly with skilled artisans from around the world and bring unique, culturally rich products into your home.</p>
+                        <h1 data-i18n="home.title">Discover Authentic Handmade Treasures</h1>
+                        <p data-i18n="home.subtitle">Connect directly with skilled artisans from around the world and bring unique, culturally rich products into your home.</p>
                         <div class="cta-buttons">
-                            <a href="#" class="btn btn-primary" onclick="showPage('marketplace')">Explore Products</a>
-                            <a href="#" class="btn btn-secondary" onclick="showPage('onboarding')">Join as Artisan</a>
+                            <a href="#" class="btn btn-primary" onclick="showPage('marketplace')" data-i18n="home.explore">Explore Products</a>
+                            <a href="#" class="btn btn-secondary" onclick="showPage('onboarding')" data-i18n="home.join">Join as Artisan</a>
                         </div>
                     </div>
                 </div>
@@ -647,27 +48,27 @@
             <!-- Features Section -->
             <section class="features">
                 <div class="container">
-                    <h2 class="section-title">Why Choose Artisan Connect</h2>
+                    <h2 class="section-title" data-i18n="home.why">Why Choose Artisan Connect</h2>
                     <div class="features-grid">
                         <div class="feature-card">
                             <div class="feature-icon">🤝</div>
-                            <h3>Support Local Artisans</h3>
-                            <p>Your purchase directly benefits craftsmen and their communities, preserving traditional skills.</p>
+                            <h3 data-i18n="features.support">Support Local Artisans</h3>
+                            <p data-i18n="features.support_desc">Your purchase directly benefits craftsmen and their communities, preserving traditional skills.</p>
                         </div>
                         <div class="feature-card">
                             <div class="feature-icon">✋</div>
-                            <h3>Authentic Handmade Products</h3>
-                            <p>Each item is carefully crafted with traditional techniques and high-quality materials.</p>
+                            <h3 data-i18n="features.authentic">Authentic Handmade Products</h3>
+                            <p data-i18n="features.authentic_desc">Each item is carefully crafted with traditional techniques and high-quality materials.</p>
                         </div>
                         <div class="feature-card">
                             <div class="feature-icon">🌍</div>
-                            <h3>Track Product Origins</h3>
-                            <p>Learn the story behind each product and the artisan who made it with our transparent sourcing.</p>
+                            <h3 data-i18n="features.track">Track Product Origins</h3>
+                            <p data-i18n="features.track_desc">Learn the story behind each product and the artisan who made it with our transparent sourcing.</p>
                         </div>
                         <div class="feature-card">
                             <div class="feature-icon">🗣️</div>
-                            <h3>Multilingual Help & Guides</h3>
-                            <p>We provide support in multiple languages to ensure smooth communication between buyers and artisans.</p>
+                            <h3 data-i18n="features.multilingual">Multilingual Help & Guides</h3>
+                            <p data-i18n="features.multilingual_desc">We provide support in multiple languages to ensure smooth communication between buyers and artisans.</p>
                         </div>
                     </div>
                 </div>
@@ -677,30 +78,30 @@
         <!-- Marketplace Page -->
         <section id="marketplace" class="page">
             <div class="container">
-                <h1 class="section-title mt-6">Artisan Marketplace</h1>
+                <h1 class="section-title mt-6" data-i18n="marketplace.title">Artisan Marketplace</h1>
                 
                 <!-- Filters -->
                 <div class="filters">
                     <div class="filter-row">
                         <div class="filter-group">
-                            <label for="craft-type">Craft Type</label>
+                            <label for="craft-type" data-i18n="marketplace.craft_type">Craft Type</label>
                             <select id="craft-type">
-                                <option value="">All Types</option>
-                                <option value="textiles">Textiles</option>
-                                <option value="pottery">Pottery</option>
-                                <option value="woodwork">Woodwork</option>
-                                <option value="jewelry">Jewelry</option>
-                                <option value="metalwork">Metalwork</option>
+                                <option value="" data-i18n="marketplace.all_types">All Types</option>
+                                <option value="textiles" data-i18n="marketplace.textiles">Textiles</option>
+                                <option value="pottery" data-i18n="marketplace.pottery">Pottery</option>
+                                <option value="woodwork" data-i18n="marketplace.woodwork">Woodwork</option>
+                                <option value="jewelry" data-i18n="marketplace.jewelry">Jewelry</option>
+                                <option value="metalwork" data-i18n="marketplace.metalwork">Metalwork</option>
                             </select>
                         </div>
                         <div class="filter-group">
-                            <label for="region">Region</label>
+                            <label for="region" data-i18n="marketplace.region">Region</label>
                             <select id="region">
-                                <option value="">All Regions</option>
-                                <option value="africa">Africa</option>
-                                <option value="asia">Asia</option>
-                                <option value="europe">Europe</option>
-                                <option value="americas">Americas</option>
+                                <option value="" data-i18n="marketplace.all_regions">All Regions</option>
+                                <option value="africa" data-i18n="marketplace.africa">Africa</option>
+                                <option value="asia" data-i18n="marketplace.asia">Asia</option>
+                                <option value="europe" data-i18n="marketplace.europe">Europe</option>
+                                <option value="americas" data-i18n="marketplace.americas">Americas</option>
                             </select>
                         </div>
                     </div>
@@ -708,11 +109,11 @@
                         <div class="filter-group">
                             <label>
                                 <input type="checkbox" id="fair-trade">
-                                Fair Trade Certified
+                                <span data-i18n="marketplace.fair_trade">Fair Trade Certified</span>
                             </label>
                         </div>
                         <div class="filter-group">
-                            <label for="min-order">Minimum Order ($)</label>
+                            <label for="min-order" data-i18n="marketplace.min_order">Minimum Order ($)</label>
                             <input type="range" id="min-order" min="0" max="500" value="0" step="10">
                             <div class="range-value">$<span id="min-order-value">0</span></div>
                         </div>
@@ -723,109 +124,109 @@
                 <div class="products-grid">
                     <div class="product-card">
                         <div class="product-image">
-                            Handwoven Textile
+                            <span data-i18n="products.kente.image">Handwoven Textile</span>
                         </div>
                         <div class="product-details">
-                            <h3 class="product-name">Kente Cloth</h3>
-                            <p class="artisan-name">By: Kwame Adinkra</p>
+                            <h3 class="product-name" data-i18n="products.kente.name">Kente Cloth</h3>
+                            <p class="artisan-name" data-i18n="products.kente.artisan">By: Kwame Adinkra</p>
                             <p class="product-region">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <circle cx="12" cy="10" r="3"></circle>
                                     <path d="M12 2a8 8 0 0 0-8 8c0 1.892.402 3.13 1.5 4.5L12 22l6.5-7.5c1.098-1.37 1.5-2.608 1.5-4.5a8 8 0 0 0-8-8z"></path>
                                 </svg>
-                                Ghana, Africa
+                                <span data-i18n="products.kente.region">Ghana, Africa</span>
                             </p>
-                            <a href="#" class="product-btn">Learn More</a>
+                            <a href="#" class="product-btn" data-i18n="products.learn_more">Learn More</a>
                         </div>
                     </div>
                     
                     <div class="product-card">
                         <div class="product-image">
-                            Ceramic Pottery
+                            <span data-i18n="products.vase.image">Ceramic Pottery</span>
                         </div>
                         <div class="product-details">
-                            <h3 class="product-name">Blue Glaze Vase</h3>
-                            <p class="artisan-name">By: Maria Fernandez</p>
+                            <h3 class="product-name" data-i18n="products.vase.name">Blue Glaze Vase</h3>
+                            <p class="artisan-name" data-i18n="products.vase.artisan">By: Maria Fernandez</p>
                             <p class="product-region">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <circle cx="12" cy="10" r="3"></circle>
                                     <path d="M12 2a8 8 0 0 0-8 8c0 1.892.402 3.13 1.5 4.5L12 22l6.5-7.5c1.098-1.37 1.5-2.608 1.5-4.5a8 8 0 0 0-8-8z"></path>
                                 </svg>
-                                Oaxaca, Mexico
+                                <span data-i18n="products.vase.region">Oaxaca, Mexico</span>
                             </p>
-                            <a href="#" class="product-btn">Learn More</a>
+                            <a href="#" class="product-btn" data-i18n="products.learn_more">Learn More</a>
                         </div>
                     </div>
                     
                     <div class="product-card">
                         <div class="product-image">
-                            Wood Carving
+                            <span data-i18n="products.elephant.image">Wood Carving</span>
                         </div>
                         <div class="product-details">
-                            <h3 class="product-name">Teakwood Elephant</h3>
-                            <p class="artisan-name">By: Rajiv Patel</p>
+                            <h3 class="product-name" data-i18n="products.elephant.name">Teakwood Elephant</h3>
+                            <p class="artisan-name" data-i18n="products.elephant.artisan">By: Rajiv Patel</p>
                             <p class="product-region">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <circle cx="12" cy="10" r="3"></circle>
                                     <path d="M12 2a8 8 0 0 0-8 8c0 1.892.402 3.13 1.5 4.5L12 22l6.5-7.5c1.098-1.37 1.5-2.608 1.5-4.5a8 8 0 0 0-8-8z"></path>
                                 </svg>
-                                Rajasthan, India
+                                <span data-i18n="products.elephant.region">Rajasthan, India</span>
                             </p>
-                            <a href="#" class="product-btn">Learn More</a>
+                            <a href="#" class="product-btn" data-i18n="products.learn_more">Learn More</a>
                         </div>
                     </div>
                     
                     <div class="product-card">
                         <div class="product-image">
-                            Silver Jewelry
+                            <span data-i18n="products.earrings.image">Silver Jewelry</span>
                         </div>
                         <div class="product-details">
-                            <h3 class="product-name">Filigree Earrings</h3>
-                            <p class="artisan-name">By: Amina Belkadi</p>
+                            <h3 class="product-name" data-i18n="products.earrings.name">Filigree Earrings</h3>
+                            <p class="artisan-name" data-i18n="products.earrings.artisan">By: Amina Belkadi</p>
                             <p class="product-region">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <circle cx="12" cy="10" r="3"></circle>
                                     <path d="M12 2a8 8 0 0 0-8 8c0 1.892.402 3.13 1.5 4.5L12 22l6.5-7.5c1.098-1.37 1.5-2.608 1.5-4.5a8 8 0 0 0-8-8z"></path>
                                 </svg>
-                                Marrakech, Morocco
+                                <span data-i18n="products.earrings.region">Marrakech, Morocco</span>
                             </p>
-                            <a href="#" class="product-btn">Learn More</a>
+                            <a href="#" class="product-btn" data-i18n="products.learn_more">Learn More</a>
                         </div>
                     </div>
                     
                     <div class="product-card">
                         <div class="product-image">
-                            Handwoven Basket
+                            <span data-i18n="products.basket.image">Handwoven Basket</span>
                         </div>
                         <div class="product-details">
-                            <h3 class="product-name">Raffia Storage Basket</h3>
-                            <p class="artisan-name">By: Fatou Diop</p>
+                            <h3 class="product-name" data-i18n="products.basket.name">Raffia Storage Basket</h3>
+                            <p class="artisan-name" data-i18n="products.basket.artisan">By: Fatou Diop</p>
                             <p class="product-region">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <circle cx="12" cy="10" r="3"></circle>
                                     <path d="M12 2a8 8 0 0 0-8 8c0 1.892.402 3.13 1.5 4.5L12 22l6.5-7.5c1.098-1.37 1.5-2.608 1.5-4.5a8 8 0 0 0-8-8z"></path>
                                 </svg>
-                                Dakar, Senegal
+                                <span data-i18n="products.basket.region">Dakar, Senegal</span>
                             </p>
-                            <a href="#" class="product-btn">Learn More</a>
+                            <a href="#" class="product-btn" data-i18n="products.learn_more">Learn More</a>
                         </div>
                     </div>
                     
                     <div class="product-card">
                         <div class="product-image">
-                            Ceramic Tableware
+                            <span data-i18n="products.bowl.image">Ceramic Tableware</span>
                         </div>
                         <div class="product-details">
-                            <h3 class="product-name">Handpainted Bowl Set</h3>
-                            <p class="artisan-name">By: Hiroshi Tanaka</p>
+                            <h3 class="product-name" data-i18n="products.bowl.name">Handpainted Bowl Set</h3>
+                            <p class="artisan-name" data-i18n="products.bowl.artisan">By: Hiroshi Tanaka</p>
                             <p class="product-region">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <circle cx="12" cy="10" r="3"></circle>
                                     <path d="M12 2a8 8 0 0 0-8 8c0 1.892.402 3.13 1.5 4.5L12 22l6.5-7.5c1.098-1.37 1.5-2.608 1.5-4.5a8 8 0 0 0-8-8z"></path>
                                 </svg>
-                                Kyoto, Japan
+                                <span data-i18n="products.bowl.region">Kyoto, Japan</span>
                             </p>
-                            <a href="#" class="product-btn">Learn More</a>
+                            <a href="#" class="product-btn" data-i18n="products.learn_more">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -835,24 +236,25 @@
         <!-- Artisan Onboarding Page -->
         <section id="onboarding" class="page">
             <div class="container">
-                <h1 class="section-title mt-6">Join Our Community of Artisans</h1>
+                <h1 class="section-title mt-6" data-i18n="onboarding.title">Join Our Community of Artisans</h1>
                 
                 <!-- Language Toggle -->
                 <div class="language-toggle">
-                    <button class="language-btn active">English</button>
-                    <button class="language-btn">Español</button>
-                    <button class="language-btn">Français</button>
-                    <button class="language-btn">العربية</button>
+                    <button class="language-btn active" onclick="changeLanguage('en')">English</button>
+                    <button class="language-btn" onclick="changeLanguage('es')">Español</button>
+                    <button class="language-btn" onclick="changeLanguage('fr')">Français</button>
+                    <button class="language-btn" onclick="changeLanguage('ar')">العربية</button>
+                    <button class="language-btn" onclick="changeLanguage('hi')">हिन्दी</button>
                 </div>
                 
                 <!-- Timeline -->
                 <div class="timeline">
                     <div class="timeline-step">
                         <div class="timeline-content">
-                            <h3>Create Your Profile</h3>
-                            <p>Sign up and tell us about yourself, your craft, and your cultural heritage. This helps buyers connect with your story.</p>
+                            <h3 data-i18n="onboarding.step1.title">Create Your Profile</h3>
+                            <p data-i18n="onboarding.step1.desc">Sign up and tell us about yourself, your craft, and your cultural heritage. This helps buyers connect with your story.</p>
                             <div class="video-placeholder">
-                                Video Tutorial: Creating Your Profile
+                                <span data-i18n="onboarding.step1.video">Video Tutorial: Creating Your Profile</span>
                             </div>
                         </div>
                         <div class="timeline-icon">1</div>
@@ -860,10 +262,10 @@
                     
                     <div class="timeline-step">
                         <div class="timeline-content">
-                            <h3>Showcase Your Work</h3>
-                            <p>Upload high-quality photos of your products with detailed descriptions, materials used, and traditional techniques.</p>
+                            <h3 data-i18n="onboarding.step2.title">Showcase Your Work</h3>
+                            <p data-i18n="onboarding.step2.desc">Upload high-quality photos of your products with detailed descriptions, materials used, and traditional techniques.</p>
                             <div class="video-placeholder">
-                                Video Tutorial: Product Photography Tips
+                                <span data-i18n="onboarding.step2.video">Video Tutorial: Product Photography Tips</span>
                             </div>
                         </div>
                         <div class="timeline-icon">2</div>
@@ -871,10 +273,10 @@
                     
                     <div class="timeline-step">
                         <div class="timeline-content">
-                            <h3>Set Your Prices</h3>
-                            <p>We'll help you determine fair prices that reflect your skill, materials, and time while remaining competitive.</p>
+                            <h3 data-i18n="onboarding.step3.title">Set Your Prices</h3>
+                            <p data-i18n="onboarding.step3.desc">We'll help you determine fair prices that reflect your skill, materials, and time while remaining competitive.</p>
                             <div class="video-placeholder">
-                                Video Tutorial: Pricing Strategies
+                                <span data-i18n="onboarding.step3.video">Video Tutorial: Pricing Strategies</span>
                             </div>
                         </div>
                         <div class="timeline-icon">3</div>
@@ -882,10 +284,10 @@
                     
                     <div class="timeline-step">
                         <div class="timeline-content">
-                            <h3>Connect With Buyers</h3>
-                            <p>Start receiving orders! Our platform handles payments and provides tools to manage your inventory and shipments.</p>
+                            <h3 data-i18n="onboarding.step4.title">Connect With Buyers</h3>
+                            <p data-i18n="onboarding.step4.desc">Start receiving orders! Our platform handles payments and provides tools to manage your inventory and shipments.</p>
                             <div class="video-placeholder">
-                                Video Tutorial: Order Management
+                                <span data-i18n="onboarding.step4.video">Video Tutorial: Order Management</span>
                             </div>
                         </div>
                         <div class="timeline-icon">4</div>
@@ -893,10 +295,10 @@
                     
                     <div class="timeline-step">
                         <div class="timeline-content">
-                            <h3>Grow Your Business</h3>
-                            <p>Access our resources for artisans including workshops, material sourcing, and business development tools.</p>
+                            <h3 data-i18n="onboarding.step5.title">Grow Your Business</h3>
+                            <p data-i18n="onboarding.step5.desc">Access our resources for artisans including workshops, material sourcing, and business development tools.</p>
                             <div class="video-placeholder">
-                                Video Tutorial: Scaling Your Craft Business
+                                <span data-i18n="onboarding.step5.video">Video Tutorial: Scaling Your Craft Business</span>
                             </div>
                         </div>
                         <div class="timeline-icon">5</div>
@@ -904,7 +306,7 @@
                 </div>
                 
                 <div class="text-center mt-10 mb-8">
-                    <a href="#" class="btn btn-primary">Start Your Application Now</a>
+                    <a href="#" class="btn btn-primary" data-i18n="onboarding.apply">Start Your Application Now</a>
                 </div>
             </div>
         </section>
@@ -916,7 +318,7 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>Artisan Connect</h3>
-                    <p>Bridging the gap between traditional craftsmanship and global markets.</p>
+                    <p data-i18n="footer.tagline">Bridging the gap between traditional craftsmanship and global markets.</p>
                     <div class="social-links">
                         <a href="#">📱</a>
                         <a href="#">📘</a>
@@ -925,83 +327,41 @@
                     </div>
                 </div>
                 <div class="footer-column">
-                    <h3>Quick Links</h3>
+                    <h3 data-i18n="footer.quick_links">Quick Links</h3>
                     <ul class="footer-links">
-                        <li><a href="#" onclick="showPage('home')">Home</a></li>
-                        <li><a href="#" onclick="showPage('marketplace')">Marketplace</a></li>
-                        <li><a href="#" onclick="showPage('onboarding')">For Artisans</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="#" onclick="showPage('home')" data-i18n="nav.home">Home</a></li>
+                        <li><a href="#" onclick="showPage('marketplace')" data-i18n="nav.marketplace">Marketplace</a></li>
+                        <li><a href="#" onclick="showPage('onboarding')" data-i18n="nav.artisans">For Artisans</a></li>
+                        <li><a href="#" data-i18n="nav.about">About Us</a></li>
+                        <li><a href="#" data-i18n="nav.contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Support</h3>
+                    <h3 data-i18n="footer.support">Support</h3>
                     <ul class="footer-links">
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Shipping Info</a></li>
-                        <li><a href="#">Returns & Exchanges</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#" data-i18n="footer.faq">FAQs</a></li>
+                        <li><a href="#" data-i18n="footer.shipping">Shipping Info</a></li>
+                        <li><a href="#" data-i18n="footer.returns">Returns & Exchanges</a></li>
+                        <li><a href="#" data-i18n="footer.privacy">Privacy Policy</a></li>
+                        <li><a href="#" data-i18n="footer.terms">Terms of Service</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Contact Us</h3>
+                    <h3 data-i18n="footer.contact">Contact Us</h3>
                     <ul class="footer-links">
                         <li>🌐 info@artisanconnect.com</li>
                         <li>📞 +1 (555) 123-4567</li>
-                        <li>📍 123 Craft Lane, Artisan City</li>
+                        <li>📍 <span data-i18n="footer.address">123 Craft Lane, Artisan City</span></li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                &copy; 2023 Artisan Connect. All rights reserved.
+                &copy; 2023 Artisan Connect. <span data-i18n="footer.rights">All rights reserved.</span>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-        
-        // Page Navigation
-        function showPage(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-            
-            // Show selected page
-            document.getElementById(pageId).classList.add('active');
-            
-            // Close mobile menu if open
-            navLinks.classList.remove('active');
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
-        }
-        
-        // Minimum Order Range Slider
-        const minOrderSlider = document.getElementById('min-order');
-        const minOrderValue = document.getElementById('min-order-value');
-        
-        minOrderSlider.addEventListener('input', () => {
-            minOrderValue.textContent = minOrderSlider.value;
-        });
-        
-        // Language Toggle
-        const languageBtns = document.querySelectorAll('.language-btn');
-        
-        languageBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                languageBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-            });
-        });
-    </script>
+    <script src="script.js"></script>
+    <script src="i18n.js"></script>
 </body>
 </html>
