@@ -1,139 +1,710 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Artisan Connect</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    /* Custom colors from your palette */
-    :root {
-      --hot-pink: #D72C6D;
-      --bonbon-pink: #F6C1D1;
-      --orange-peel: #FA7F28;
-      --orange: #F44611;
-      --peach-echo: #F7786B;
-      --spectra-yellow: #F6BE00;
-      --brook-green: #A5D3C9;
-      --parrot-green: #76B041;
-      --lemon-fizz-yellow: #EDE04D;
-      --pastel-yellow: #F5E6A1;
-      --island-paradise: #93D5D9;
-      --riverside-blue: #4C6A92;
-      --estate-blue: #1F2E56;
-      --grey-blue: #5A6384;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artisan Connect - Bridging Local Artisans with Global Buyers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Tailwind-like Color Palette */
+        :root {
+            --hot-pink: #ec4899;
+            --bonbon-pink: #f472b6;
+            --orange-peel: #ff9a00;
+            --peach-echo: #ffb6b6;
+            --spectra-yellow: #facc15;
+            --brook-green: #84cc16;
+            --parrot-green: #22c55e;
+            --island-paradise: #2dd4bf;
+            --riverside-blue: #06b6d4;
+            --estate-blue: #3b82f6;
+            --grey-blue: #64748b;
+            --pastel-yellow: #fef08a;
+            --lemon-fizz-yellow: #fde047;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8fafc;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--hot-pink);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            margin-right: 0.5rem;
+            color: var(--orange-peel);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--grey-blue);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--hot-pink);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--grey-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--peach-echo), var(--pastel-yellow));
+            padding: 5rem 0;
+            border-radius: 0 0 2rem 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1e293b;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            color: #475569;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--hot-pink);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #db2777;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--hot-pink);
+            border-color: var(--hot-pink);
+        }
+
+        .btn-secondary:hover {
+            background-color: #fce7f3;
+            transform: translateY(-2px);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: #1e293b;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--hot-pink);
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        .feature-card p {
+            color: #64748b;
+        }
+
+        /* Marketplace Page */
+        .marketplace {
+            padding: 2rem 0 4rem;
+        }
+
+        .filters {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+
+        .filter-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #475569;
+        }
+
+        .filter-group select, .filter-group input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .filter-group input[type="range"] {
+            padding: 0;
+        }
+
+        .range-value {
+            font-size: 0.875rem;
+            color: var(--grey-blue);
+            margin-top: 0.5rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            height: 200px;
+            background-color: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--grey-blue);
+        }
+
+        .product-details {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+        }
+
+        .artisan-name, .product-region {
+            font-size: 0.875rem;
+            color: #64748b;
+            margin-bottom: 0.25rem;
+        }
+
+        .product-region {
+            display: flex;
+            align-items: center;
+        }
+
+        .product-region svg {
+            margin-right: 0.25rem;
+        }
+
+        .product-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: var(--pastel-yellow);
+            color: #854d0e;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .product-btn:hover {
+            background-color: var(--lemon-fizz-yellow);
+        }
+
+        /* Artisan Onboarding Page */
+        .onboarding {
+            padding: 2rem 0 4rem;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--peach-echo);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-step {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-step:nth-child(odd) {
+            padding-right: 50%;
+        }
+
+        .timeline-step:nth-child(even) {
+            padding-left: 50%;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: var(--hot-pink);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-step:nth-child(odd) .timeline-icon {
+            right: -25px;
+            top: 20px;
+        }
+
+        .timeline-step:nth-child(even) .timeline-icon {
+            left: -25px;
+            top: 20px;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+        }
+
+        .timeline-content p {
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+
+        .video-placeholder {
+            background-color: #f1f5f9;
+            height: 200px;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--grey-blue);
+            margin-top: 1rem;
+        }
+
+        .language-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .language-btn {
+            padding: 0.5rem 1rem;
+            background: none;
+            border: 1px solid #e2e8f0;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .language-btn:first-child {
+            border-radius: 0.5rem 0 0 0.5rem;
+        }
+
+        .language-btn:last-child {
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+
+        .language-btn.active {
+            background-color: var(--hot-pink);
+            color: white;
+            border-color: var(--hot-pink);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1e293b;
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.25rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--peach-echo);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+
+        /* Page Navigation */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .timeline::before {
+                left: 31px;
+            }
+
+            .timeline-step:nth-child(odd),
+            .timeline-step:nth-child(even) {
+                padding-left: 80px;
+                padding-right: 0;
+            }
+
+            .timeline-step:nth-child(odd) .timeline-icon,
+            .timeline-step:nth-child(even) .timeline-icon {
+                left: 6px;
+                right: auto;
+            }
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-1 { margin-top: 0.25rem; }
+        .mt-2 { margin-top: 0.5rem; }
+        .mt-3 { margin-top: 0.75rem; }
+        .mt-4 { margin-top: 1rem; }
+        .mt-5 { margin-top: 1.25rem; }
+        .mt-6 { margin-top: 1.5rem; }
+        .mt-8 { margin-top: 2rem; }
+        .mt-10 { margin-top: 2.5rem; }
+
+        .mb-1 { margin-bottom: 0.25rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-3 { margin-bottom: 0.75rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-5 { margin-bottom: 1.25rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mb-10 { margin-bottom: 2.5rem; }
+    </style>
 </head>
-<body class="font-sans bg-white text-gray-800 scroll-smooth">
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo" onclick="showPage('home')">
+                    <span class="logo-icon">🎨</span>
+                    Artisan Connect
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#" onclick="showPage('home')">Home</a></li>
+                    <li><a href="#" onclick="showPage('marketplace')">Marketplace</a></li>
+                    <li><a href="#" onclick="showPage('onboarding')">For Artisans</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-  <!-- Navbar -->
-  <nav class="bg-[color:var(--estate-blue)] text-white p-4">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <h1 class="text-2xl font-bold">Artisan Connect</h1>
-      <div class="space-x-4">
-        <a href="#home" class="hover:underline">Home</a>
-        <a href="#marketplace" class="hover:underline">Marketplace</a>
-        <a href="#onboarding" class="hover:underline">Onboarding</a>
-      </div>
-    </div>
-  </nav>
+    <!-- Home Page -->
+    <main>
+        <section id="home" class="page active">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1>Discover Authentic Handmade Treasures</h1>
+                        <p>Connect directly with skilled artisans from around the world and bring unique, culturally rich products into your home.</p>
+                        <div class="cta-buttons">
+                            <a href="#" class="btn btn-primary" onclick="showPage('marketplace')">Explore Products</a>
+                            <a href="#" class="btn btn-secondary" onclick="showPage('onboarding')">Join as Artisan</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-  <!-- Hero -->
-  <section id="home" class="bg-[color:var(--island-paradise)] py-20 text-center px-4">
-    <h2 class="text-4xl font-bold mb-4">Connecting Artisans with the World</h2>
-    <p class="mb-6 text-lg">Support local crafts. Discover authentic handmade products. Know their stories.</p>
-    <div class="space-x-4">
-      <a href="#marketplace" class="bg-[color:var(--spectra-yellow)] text-black px-6 py-2 rounded-full font-medium">Explore Products</a>
-      <a href="#onboarding" class="bg-[color:var(--parrot-green)] text-white px-6 py-2 rounded-full font-medium">Join as Artisan</a>
-    </div>
-  </section>
+            <!-- Features Section -->
+            <section class="features">
+                <div class="container">
+                    <h2 class="section-title">Why Choose Artisan Connect</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🤝</div>
+                            <h3>Support Local Artisans</h3>
+                            <p>Your purchase directly benefits craftsmen and their communities, preserving traditional skills.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">✋</div>
+                            <h3>Authentic Handmade Products</h3>
+                            <p>Each item is carefully crafted with traditional techniques and high-quality materials.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🌍</div>
+                            <h3>Track Product Origins</h3>
+                            <p>Learn the story behind each product and the artisan who made it with our transparent sourcing.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🗣️</div>
+                            <h3>Multilingual Help & Guides</h3>
+                            <p>We provide support in multiple languages to ensure smooth communication between buyers and artisans.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
 
-  <!-- Features -->
-  <section class="max-w-6xl mx-auto py-16 px-4 text-center">
-    <h3 class="text-3xl font-bold mb-12">Why Artisan Connect?</h3>
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-      <div class="bg-[color:var(--hot-pink)] text-white p-6 rounded-lg shadow-md">Support Local Artisans</div>
-      <div class="bg-[color:var(--orange-peel)] text-white p-6 rounded-lg shadow-md">Authentic Handmade Products</div>
-      <div class="bg-[color:var(--brook-green)] text-black p-6 rounded-lg shadow-md">QR-Based Product Provenance</div>
-      <div class="bg-[color:var(--grey-blue)] text-white p-6 rounded-lg shadow-md">Multilingual Assistance</div>
-    </div>
-  </section>
-
-  <!-- Marketplace -->
-  <section id="marketplace" class="bg-[color:var(--pastel-yellow)] py-16 px-4">
-    <h3 class="text-3xl font-bold text-center mb-8">Explore the Marketplace</h3>
-    
-    <!-- Filters (static) -->
-    <div class="max-w-4xl mx-auto mb-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-      <select class="p-2 rounded border">
-        <option>Craft Type</option>
-        <option>Textiles</option>
-        <option>Pottery</option>
-      </select>
-      <select class="p-2 rounded border">
-        <option>Region</option>
-        <option>North India</option>
-        <option>South India</option>
-      </select>
-      <label><input type="checkbox" class="mr-1"> Certified</label>
-      <input type="number" placeholder="Min Order Qty" class="p-2 border rounded" />
-    </div>
-
-    <!-- Product Grid -->
-    <div class="grid max-w-6xl mx-auto grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="bg-white p-4 shadow rounded">
-        <div class="bg-gray-200 h-40 mb-4"></div>
-        <h4 class="text-xl font-semibold">Handwoven Shawl</h4>
-        <p class="text-sm text-gray-600">By Ramesh | Himachal Pradesh</p>
-        <button class="mt-2 text-[color:var(--riverside-blue)] font-medium">Learn More</button>
-      </div>
-      <div class="bg-white p-4 shadow rounded">
-        <div class="bg-gray-200 h-40 mb-4"></div>
-        <h4 class="text-xl font-semibold">Terracotta Pot</h4>
-        <p class="text-sm text-gray-600">By Savita | West Bengal</p>
-        <button class="mt-2 text-[color:var(--riverside-blue)] font-medium">Learn More</button>
-      </div>
-      <div class="bg-white p-4 shadow rounded">
-        <div class="bg-gray-200 h-40 mb-4"></div>
-        <h4 class="text-xl font-semibold">Block Print Fabric</h4>
-        <p class="text-sm text-gray-600">By Meena | Rajasthan</p>
-        <button class="mt-2 text-[color:var(--riverside-blue)] font-medium">Learn More</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Onboarding -->
-  <section id="onboarding" class="bg-[color:var(--lemon-fizz-yellow)] py-16 px-4 text-center">
-    <h3 class="text-3xl font-bold mb-8">Join as an Artisan</h3>
-    <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-6">
-      <div class="bg-white p-6 rounded shadow">
-        <h4 class="text-xl font-bold mb-2">Step 1</h4>
-        <p>Fill your details in the registration form</p>
-      </div>
-      <div class="bg-white p-6 rounded shadow">
-        <h4 class="text-xl font-bold mb-2">Step 2</h4>
-        <p>Upload sample photos or videos of your work</p>
-      </div>
-      <div class="bg-white p-6 rounded shadow">
-        <h4 class="text-xl font-bold mb-2">Step 3</h4>
-        <p>Get verified and start receiving orders</p>
-      </div>
-    </div>
-    <div class="mt-8">
-      <button class="bg-[color:var(--orange)] text-white px-6 py-2 rounded-full">Register Now</button>
-    </div>
-    <div class="mt-4 text-sm">Language: 
-      <button class="mx-1 underline">English</button>
-      <button class="mx-1 underline">Hindi</button>
-      <button class="mx-1 underline">Bengali</button>
-      <button class="mx-1 underline">Tamil</button>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-[color:var(--estate-blue)] text-white text-center p-4">
-    © 2025 Artisan Connect. All rights reserved.
-  </footer>
-</body>
-</html>
+        <!-- Marketplace Page -->
+        <section id="marketplace" class="page">
+            <div class="container">
+                <h1 class="section-title mt-6">Artisan Marketplace</h1>
+                
+                <!-- Filters -->
+                <div class="filters">
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <label for="craft-type">Craft Type</label>
+                            <select id="craft-type">
+                                <option value="">All Types</option>
+                                <option value="textiles">Textiles</option>
+                                <option value="pottery">Pottery</option>
+                                <option value="woodwork">Woodwork</option>
+                                <option value="jewelry">Jewelry</option>
+                                <option value="metalwork">Metalwork</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="region">Region</label>
+                            <select id="region">
+                                <option value="">All Regions</option>
+                                <option value="africa">Africa</option>
+                                <option value="asia">Asia</option>
+                                <option value="europe">Europe</option>
+                                <option value="americas">Americas</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <label>
+       
