@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artisan Connect</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom colors from your palette */
+    :root {
+      --hot-pink: #D72C6D;
+      --bonbon-pink: #F6C1D1;
+      --orange-peel: #FA7F28;
+      --orange: #F44611;
+      --peach-echo: #F7786B;
+      --spectra-yellow: #F6BE00;
+      --brook-green: #A5D3C9;
+      --parrot-green: #76B041;
+      --lemon-fizz-yellow: #EDE04D;
+      --pastel-yellow: #F5E6A1;
+      --island-paradise: #93D5D9;
+      --riverside-blue: #4C6A92;
+      --estate-blue: #1F2E56;
+      --grey-blue: #5A6384;
+    }
+  </style>
+</head>
+<body class="font-sans bg-white text-gray-800 scroll-smooth">
+
+  <!-- Navbar -->
+  <nav class="bg-[color:var(--estate-blue)] text-white p-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Artisan Connect</h1>
+      <div class="space-x-4">
+        <a href="#home" class="hover:underline">Home</a>
+        <a href="#marketplace" class="hover:underline">Marketplace</a>
+        <a href="#onboarding" class="hover:underline">Onboarding</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="home" class="bg-[color:var(--island-paradise)] py-20 text-center px-4">
+    <h2 class="text-4xl font-bold mb-4">Connecting Artisans with the World</h2>
+    <p class="mb-6 text-lg">Support local crafts. Discover authentic handmade products. Know their stories.</p>
+    <div class="space-x-4">
+      <a href="#marketplace" class="bg-[color:var(--spectra-yellow)] text-black px-6 py-2 rounded-full font-medium">Explore Products</a>
+      <a href="#onboarding" class="bg-[color:var(--parrot-green)] text-white px-6 py-2 rounded-full font-medium">Join as Artisan</a>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="max-w-6xl mx-auto py-16 px-4 text-center">
+    <h3 class="text-3xl font-bold mb-12">Why Artisan Connect?</h3>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div class="bg-[color:var(--hot-pink)] text-white p-6 rounded-lg shadow-md">Support Local Artisans</div>
+      <div class="bg-[color:var(--orange-peel)] text-white p-6 rounded-lg shadow-md">Authentic Handmade Products</div>
+      <div class="bg-[color:var(--brook-green)] text-black p-6 rounded-lg shadow-md">QR-Based Product Provenance</div>
+      <div class="bg-[color:var(--grey-blue)] text-white p-6 rounded-lg shadow-md">Multilingual Assistance</div>
+    </div>
+  </section>
+
+  <!-- Marketplace -->
+  <section id="marketplace" class="bg-[color:var(--pastel-yellow)] py-16 px-4">
+    <h3 class="text-3xl font-bold text-center mb-8">Explore the Marketplace</h3>
+    
+    <!-- Filters (static) -->
+    <div class="max-w-4xl mx-auto mb-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+      <select class="p-2 rounded border">
+        <option>Craft Type</option>
+        <option>Textiles</option>
+        <option>Pottery</option>
+      </select>
+      <select class="p-2 rounded border">
+        <option>Region</option>
+        <option>North India</option>
+        <option>South India</option>
+      </select>
+      <label><input type="checkbox" class="mr-1"> Certified</label>
+      <input type="number" placeholder="Min Order Qty" class="p-2 border rounded" />
+    </div>
+
+    <!-- Product Grid -->
+    <div class="grid max-w-6xl mx-auto grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-white p-4 shadow rounded">
+        <div class="bg-gray-200 h-40 mb-4"></div>
+        <h4 class="text-xl font-semibold">Handwoven Shawl</h4>
+        <p class="text-sm text-gray-600">By Ramesh | Himachal Pradesh</p>
+        <button class="mt-2 text-[color:var(--riverside-blue)] font-medium">Learn More</button>
+      </div>
+      <div class="bg-white p-4 shadow rounded">
+        <div class="bg-gray-200 h-40 mb-4"></div>
+        <h4 class="text-xl font-semibold">Terracotta Pot</h4>
+        <p class="text-sm text-gray-600">By Savita | West Bengal</p>
+        <button class="mt-2 text-[color:var(--riverside-blue)] font-medium">Learn More</button>
+      </div>
+      <div class="bg-white p-4 shadow rounded">
+        <div class="bg-gray-200 h-40 mb-4"></div>
+        <h4 class="text-xl font-semibold">Block Print Fabric</h4>
+        <p class="text-sm text-gray-600">By Meena | Rajasthan</p>
+        <button class="mt-2 text-[color:var(--riverside-blue)] font-medium">Learn More</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Onboarding -->
+  <section id="onboarding" class="bg-[color:var(--lemon-fizz-yellow)] py-16 px-4 text-center">
+    <h3 class="text-3xl font-bold mb-8">Join as an Artisan</h3>
+    <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-6">
+      <div class="bg-white p-6 rounded shadow">
+        <h4 class="text-xl font-bold mb-2">Step 1</h4>
+        <p>Fill your details in the registration form</p>
+      </div>
+      <div class="bg-white p-6 rounded shadow">
+        <h4 class="text-xl font-bold mb-2">Step 2</h4>
+        <p>Upload sample photos or videos of your work</p>
+      </div>
+      <div class="bg-white p-6 rounded shadow">
+        <h4 class="text-xl font-bold mb-2">Step 3</h4>
+        <p>Get verified and start receiving orders</p>
+      </div>
+    </div>
+    <div class="mt-8">
+      <button class="bg-[color:var(--orange)] text-white px-6 py-2 rounded-full">Register Now</button>
+    </div>
+    <div class="mt-4 text-sm">Language: 
+      <button class="mx-1 underline">English</button>
+      <button class="mx-1 underline">Hindi</button>
+      <button class="mx-1 underline">Bengali</button>
+      <button class="mx-1 underline">Tamil</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[color:var(--estate-blue)] text-white text-center p-4">
+    © 2025 Artisan Connect. All rights reserved.
+  </footer>
+</body>
+</html>
