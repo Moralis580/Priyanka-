@@ -22,6 +22,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
@@ -69,10 +73,11 @@ header {
 .nav-links {
     display: flex;
     list-style: none;
+    align-items: center;
 }
 
 .nav-links li {
-    margin-left: 2rem;
+    margin-left: 1.5rem;
 }
 
 .nav-links a {
@@ -82,7 +87,7 @@ header {
     transition: color 0.3s;
 }
 
-.nav-links a:hover {
+.nav-links a:hover, .nav-links a.active {
     color: var(--hot-pink);
 }
 
@@ -111,7 +116,7 @@ header {
 }
 
 .hero h1 {
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 700;
     margin-bottom: 1.5rem;
     color: #1e293b;
@@ -127,6 +132,8 @@ header {
 .cta-buttons {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .btn {
@@ -136,6 +143,8 @@ header {
     text-decoration: none;
     transition: all 0.3s;
     border: 2px solid transparent;
+    display: inline-block;
+    text-align: center;
 }
 
 .btn-primary {
@@ -166,7 +175,7 @@ header {
 
 .section-title {
     text-align: center;
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 4vw, 2rem);
     margin-bottom: 3rem;
     color: #1e293b;
 }
@@ -307,10 +316,6 @@ header {
     align-items: center;
 }
 
-.product-region svg {
-    margin-right: 0.25rem;
-}
-
 .product-btn {
     display: inline-block;
     margin-top: 1rem;
@@ -421,6 +426,7 @@ header {
     display: flex;
     justify-content: center;
     margin-bottom: 2rem;
+    flex-wrap: wrap;
 }
 
 .language-btn {
@@ -430,6 +436,7 @@ header {
     font-family: 'Poppins', sans-serif;
     cursor: pointer;
     transition: all 0.3s;
+    background-color: white;
 }
 
 .language-btn:first-child {
@@ -486,4 +493,113 @@ footer {
 
 .social-links {
     display: flex;
-    gap
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.25rem;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--peach-echo);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid #334155;
+    color: #94a3b8;
+    font-size: 0.875rem;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: white;
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 0.5rem 0;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .timeline::before {
+        left: 31px;
+    }
+
+    .timeline-step:nth-child(odd),
+    .timeline-step:nth-child(even) {
+        padding-left: 80px;
+        padding-right: 0;
+    }
+
+    .timeline-step:nth-child(odd) .timeline-icon,
+    .timeline-step:nth-child(even) .timeline-icon {
+        left: 6px;
+        right: auto;
+    }
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 0.75rem; }
+.mt-4 { margin-top: 1rem; }
+.mt-5 { margin-top: 1.25rem; }
+.mt-6 { margin-top: 1.5rem; }
+.mt-8 { margin-top: 2rem; }
+.mt-10 { margin-top: 2.5rem; }
+
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 0.75rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-5 { margin-bottom: 1.25rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+.mb-10 { margin-bottom: 2.5rem; }
+
+/* Performance Optimizations */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+[data-i18n] {
+    transition: opacity 0.3s;
+}
+
+.language-changing [data-i18n] {
+    opacity: 0.5;
+}
