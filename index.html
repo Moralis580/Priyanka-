@@ -1,367 +1,296 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artisan Connect - Bridging Local Artisans with Global Buyers</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>My Resume</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #e0eafc 0%, #f7d9e3 100%);
+            font-size: 18px;
+        }
+        .resume-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: linear-gradient(120deg, #f7faff 60%, #e3f0ff 100%);
+            border-radius: 26px;
+            box-shadow: 0 8px 36px rgba(44, 62, 80, 0.15);
+            padding: 48px 56px 36px 56px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid #e0e0e0;
+            padding: 36px 36px 28px 36px;
+            margin-bottom: 36px;
+            background: linear-gradient(90deg, #e0c3fc 0%, #8ec5fc 100%);
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.06);
+            min-height: 220px;
+        }
+        .header-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 12px;
+        }
+        .header-info h1 {
+            color: #2e0046;
+            margin-bottom: 8px;
+            font-size: 2.7em;
+            letter-spacing: 1.5px;
+            margin-top: 0;
+        }
+        .contact-info {
+            color: #444;
+            font-size: 1.13em;
+            margin-bottom: 0;
+        }
+        .contact-info span {
+            margin-right: 22px;
+        }
+        .header img {
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(44, 62, 80, 0.13);
+            width: 170px;
+            height: 210px;
+            object-fit: cover;
+            margin-left: 40px;
+            border: 3px solid #b2d8f7;
+            background: #fff;
+        }
+        .section {
+            margin-bottom: 32px;
+            background: #f3f7fa;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.04);
+            padding: 24px 28px 18px 28px;
+            transition: box-shadow 0.3s, background 0.3s, transform 0.3s;
+        }
+        .section:hover {
+            background: #e6f0fa;
+            box-shadow: 0 8px 24px rgba(44, 62, 80, 0.13);
+            transform: translateY(-4px) scale(1.015);
+        }
+        h2, h3 {
+            color: #3a3a7a;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+        ul {
+            padding-left: 22px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 18px;
+            background: #f9fafc;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #e3e3e3;
+            padding: 10px 12px;
+            text-align: left;
+            transition: background 0.2s;
+        }
+        th {
+            background-color: #8ec5fc;
+            color: #fff;
+            font-weight: 600;
+        }
+        tr:nth-child(even) td {
+            background: #f1f7fa;
+        }
+        tr:hover td {
+            background: #e0eafc;
+        }
+        a {
+            text-decoration: none;
+            color: #1b22a4;
+            transition: color 0.2s;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #2e0046;
+        }
+        .social-links {
+            display: flex;
+            gap: 18px;
+            margin-top: 8px;
+        }
+        .social-links a {
+            display: flex;
+            align-items: center;
+            font-size: 1.1em;
+            background: #e0eafc;
+            border-radius: 8px;
+            padding: 6px 16px;
+            transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+            box-shadow: 0 1px 4px rgba(44, 62, 80, 0.06);
+        }
+        .social-links a:hover {
+            background: #b2d8f7;
+            color: #2e0046;
+            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.13);
+        }
+        .social-links span {
+            margin-right: 6px;
+        }
+        hr {
+            border: none;
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 28px 0 18px 0;
+        }
+        @media (max-width: 700px) {
+            .resume-container { padding: 18px 6vw; }
+            .header { flex-direction: column; align-items: flex-start; }
+            .header img { margin: 18px 0 0 0; width: 120px; height: 150px; }
+            .section { padding: 14px 6vw 10px 6vw; }
+        }
+    </style>
+    <script>
+        // Add a tooltip/novel hover effect for each section
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section');
+            const tooltips = [
+                'This is my profile section. I keep it concise and impactful!',
+                'My academic journey and achievements.',
+                'My professional experience and roles.',
+                'My key skills and strengths.',
+                'Languages I am proficient in.',
+                'What I love to do in my free time.',
+                'Connect with me on social media!'
+            ];
+            sections.forEach((section, idx) => {
+                section.addEventListener('mouseenter', function(e) {
+                    let tip = document.createElement('div');
+                    tip.className = 'custom-tooltip';
+                    tip.innerText = tooltips[idx] || '';
+                    document.body.appendChild(tip);
+                    const rect = section.getBoundingClientRect();
+                    tip.style.left = (rect.left + window.scrollX + 20) + 'px';
+                    tip.style.top = (rect.top + window.scrollY - 38) + 'px';
+                });
+                section.addEventListener('mouseleave', function() {
+                    document.querySelectorAll('.custom-tooltip').forEach(tip => tip.remove());
+                });
+            });
+        });
+    </script>
+    <style>
+        .custom-tooltip {
+            position: absolute;
+            background: linear-gradient(90deg, #e0c3fc 0%, #8ec5fc 100%);
+            color: #2e0046;
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-size: 1em;
+            box-shadow: 0 2px 12px rgba(44, 62, 80, 0.13);
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0.97;
+            transition: opacity 0.2s;
+            font-family: inherit;
+        }
+    </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav class="navbar">
-                <a href="#" class="logo" onclick="showPage('home')">
-                    <span class="logo-icon">🎨</span>
-                    Artisan Connect
-                </a>
-                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="#" onclick="showPage('home')" data-i18n="nav.home">Home</a></li>
-                    <li><a href="#" onclick="showPage('marketplace')" data-i18n="nav.marketplace">Marketplace</a></li>
-                    <li><a href="#" onclick="showPage('onboarding')" data-i18n="nav.artisans">For Artisans</a></li>
-                    <li><a href="#" data-i18n="nav.about">About Us</a></li>
-                    <li><a href="#" data-i18n="nav.contact">Contact</a></li>
-                </ul>
-            </nav>
+    <div class="resume-container">
+        <div class="header">
+            <div class="header-info">
+                <h1>Shailasri Ramesh Mukundi</h1>
+                <div class="contact-info">
+                    <span>📧 <a href="mailto:shailasrim@gmail.com">shailasrim@gmail.com</a></span>
+                    <span>📞 9699157637</span>
+                </div>
+                <div class="contact-info">
+                    <span>🏠 Flat no. 501E Mellenium towers Old Ausa Road, Near Sadashiv Mangal Karyalay, Latur</span>
+                </div>
+            </div>
+            <img src="./Images/Photo 1.png" alt="Profile Photo">
         </div>
-    </header>
-
-    <!-- Home Page -->
-    <main>
-        <section id="home" class="page active">
-            <!-- Hero Section -->
-            <section class="hero">
-                <div class="container">
-                    <div class="hero-content">
-                        <h1 data-i18n="home.title">Discover Authentic Handmade Treasures</h1>
-                        <p data-i18n="home.subtitle">Connect directly with skilled artisans from around the world and bring unique, culturally rich products into your home.</p>
-                        <div class="cta-buttons">
-                            <a href="#" class="btn btn-primary" onclick="showPage('marketplace')" data-i18n="home.explore">Explore Products</a>
-                            <a href="#" class="btn btn-secondary" onclick="showPage('onboarding')" data-i18n="home.join">Join as Artisan</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Features Section -->
-            <section class="features">
-                <div class="container">
-                    <h2 class="section-title" data-i18n="home.why">Why Choose Artisan Connect</h2>
-                    <div class="features-grid">
-                        <div class="feature-card">
-                            <div class="feature-icon">🤝</div>
-                            <h3 data-i18n="features.support">Support Local Artisans</h3>
-                            <p data-i18n="features.support_desc">Your purchase directly benefits craftsmen and their communities, preserving traditional skills.</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon">✋</div>
-                            <h3 data-i18n="features.authentic">Authentic Handmade Products</h3>
-                            <p data-i18n="features.authentic_desc">Each item is carefully crafted with traditional techniques and high-quality materials.</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon">🌍</div>
-                            <h3 data-i18n="features.track">Track Product Origins</h3>
-                            <p data-i18n="features.track_desc">Learn the story behind each product and the artisan who made it with our transparent sourcing.</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon">🗣️</div>
-                            <h3 data-i18n="features.multilingual">Multilingual Help & Guides</h3>
-                            <p data-i18n="features.multilingual_desc">We provide support in multiple languages to ensure smooth communication between buyers and artisans.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </section>
-
-        <!-- Marketplace Page -->
-        <section id="marketplace" class="page">
-            <div class="container">
-                <h1 class="section-title mt-6" data-i18n="marketplace.title">Artisan Marketplace</h1>
-                
-                <!-- Filters -->
-                <div class="filters">
-                    <div class="filter-row">
-                        <div class="filter-group">
-                            <label for="craft-type" data-i18n="marketplace.craft_type">Craft Type</label>
-                            <select id="craft-type">
-                                <option value="" data-i18n="marketplace.all_types">All Types</option>
-                                <option value="textiles" data-i18n="marketplace.textiles">Textiles</option>
-                                <option value="pottery" data-i18n="marketplace.pottery">Pottery</option>
-                                <option value="woodwork" data-i18n="marketplace.woodwork">Woodwork</option>
-                                <option value="jewelry" data-i18n="marketplace.jewelry">Jewelry</option>
-                                <option value="metalwork" data-i18n="marketplace.metalwork">Metalwork</option>
-                            </select>
-                        </div>
-                        <div class="filter-group">
-                            <label for="region" data-i18n="marketplace.region">Region</label>
-                            <select id="region">
-                                <option value="" data-i18n="marketplace.all_regions">All Regions</option>
-                                <option value="africa" data-i18n="marketplace.africa">Africa</option>
-                                <option value="asia" data-i18n="marketplace.asia">Asia</option>
-                                <option value="europe" data-i18n="marketplace.europe">Europe</option>
-                                <option value="americas" data-i18n="marketplace.americas">Americas</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="filter-row">
-                        <div class="filter-group">
-                            <label>
-                                <input type="checkbox" id="fair-trade">
-                                <span data-i18n="marketplace.fair_trade">Fair Trade Certified</span>
-                            </label>
-                        </div>
-                        <div class="filter-group">
-                            <label for="min-order" data-i18n="marketplace.min_order">Minimum Order ($)</label>
-                            <input type="range" id="min-order" min="0" max="500" value="0" step="10">
-                            <div class="range-value">$<span id="min-order-value">0</span></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Product Grid -->
-                <div class="products-grid">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <span data-i18n="products.kente.image">Handwoven Textile</span>
-                        </div>
-                        <div class="product-details">
-                            <h3 class="product-name" data-i18n="products.kente.name">Kente Cloth</h3>
-                            <p class="artisan-name" data-i18n="products.kente.artisan">By: Kwame Adinkra</p>
-                            <p class="product-region">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="10" r="3"></circle>
-                                    <path d="M12 2a8 8 0 0 0-8 8c0 1.892.402 3.13 1.5 4.5L12 22l6.5-7.5c1.098-1.37 1.5-2.608 1.5-4.5a8 8 0 0 0-8-8z"></path>
-                                </svg>
-                                <span data-i18n="products.kente.region">Ghana, Africa</span>
-                            </p>
-                            <a href="#" class="product-btn" data-i18n="products.learn_more">Learn More</a>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <span data-i18n="products.vase.image">Ceramic Pottery</span>
-                        </div>
-                        <div class="product-details">
-                            <h3 class="product-name" data-i18n="products.vase.name">Blue Glaze Vase</h3>
-                            <p class="artisan-name" data-i18n="products.vase.artisan">By: Maria Fernandez</p>
-                            <p class="product-region">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="10" r="3"></circle>
-                                    <path d="M12 2a8 8 0 0 0-8 8c0 1.892.402 3.13 1.5 4.5L12 22l6.5-7.5c1.098-1.37 1.5-2.608 1.5-4.5a8 8 0 0 0-8-8z"></path>
-                                </svg>
-                                <span data-i18n="products.vase.region">Oaxaca, Mexico</span>
-                            </p>
-                            <a href="#" class="product-btn" data-i18n="products.learn_more">Learn More</a>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <span data-i18n="products.elephant.image">Wood Carving</span>
-                        </div>
-                        <div class="product-details">
-                            <h3 class="product-name" data-i18n="products.elephant.name">Teakwood Elephant</h3>
-                            <p class="artisan-name" data-i18n="products.elephant.artisan">By: Rajiv Patel</p>
-                            <p class="product-region">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="10" r="3"></circle>
-                                    <path d="M12 2a8 8 0 0 0-8 8c0 1.892.402 3.13 1.5 4.5L12 22l6.5-7.5c1.098-1.37 1.5-2.608 1.5-4.5a8 8 0 0 0-8-8z"></path>
-                                </svg>
-                                <span data-i18n="products.elephant.region">Rajasthan, India</span>
-                            </p>
-                            <a href="#" class="product-btn" data-i18n="products.learn_more">Learn More</a>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <span data-i18n="products.earrings.image">Silver Jewelry</span>
-                        </div>
-                        <div class="product-details">
-                            <h3 class="product-name" data-i18n="products.earrings.name">Filigree Earrings</h3>
-                            <p class="artisan-name" data-i18n="products.earrings.artisan">By: Amina Belkadi</p>
-                            <p class="product-region">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="10" r="3"></circle>
-                                    <path d="M12 2a8 8 0 0 0-8 8c0 1.892.402 3.13 1.5 4.5L12 22l6.5-7.5c1.098-1.37 1.5-2.608 1.5-4.5a8 8 0 0 0-8-8z"></path>
-                                </svg>
-                                <span data-i18n="products.earrings.region">Marrakech, Morocco</span>
-                            </p>
-                            <a href="#" class="product-btn" data-i18n="products.learn_more">Learn More</a>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <span data-i18n="products.basket.image">Handwoven Basket</span>
-                        </div>
-                        <div class="product-details">
-                            <h3 class="product-name" data-i18n="products.basket.name">Raffia Storage Basket</h3>
-                            <p class="artisan-name" data-i18n="products.basket.artisan">By: Fatou Diop</p>
-                            <p class="product-region">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="10" r="3"></circle>
-                                    <path d="M12 2a8 8 0 0 0-8 8c0 1.892.402 3.13 1.5 4.5L12 22l6.5-7.5c1.098-1.37 1.5-2.608 1.5-4.5a8 8 0 0 0-8-8z"></path>
-                                </svg>
-                                <span data-i18n="products.basket.region">Dakar, Senegal</span>
-                            </p>
-                            <a href="#" class="product-btn" data-i18n="products.learn_more">Learn More</a>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <span data-i18n="products.bowl.image">Ceramic Tableware</span>
-                        </div>
-                        <div class="product-details">
-                            <h3 class="product-name" data-i18n="products.bowl.name">Handpainted Bowl Set</h3>
-                            <p class="artisan-name" data-i18n="products.bowl.artisan">By: Hiroshi Tanaka</p>
-                            <p class="product-region">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="10" r="3"></circle>
-                                    <path d="M12 2a8 8 0 0 0-8 8c0 1.892.402 3.13 1.5 4.5L12 22l6.5-7.5c1.098-1.37 1.5-2.608 1.5-4.5a8 8 0 0 0-8-8z"></path>
-                                </svg>
-                                <span data-i18n="products.bowl.region">Kyoto, Japan</span>
-                            </p>
-                            <a href="#" class="product-btn" data-i18n="products.learn_more">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Artisan Onboarding Page -->
-        <section id="onboarding" class="page">
-            <div class="container">
-                <h1 class="section-title mt-6" data-i18n="onboarding.title">Join Our Community of Artisans</h1>
-                
-                <!-- Language Toggle -->
-                <div class="language-toggle">
-                    <button class="language-btn active" onclick="changeLanguage('en')">English</button>
-                    <button class="language-btn" onclick="changeLanguage('es')">Español</button>
-                    <button class="language-btn" onclick="changeLanguage('fr')">Français</button>
-                    <button class="language-btn" onclick="changeLanguage('ar')">العربية</button>
-                    <button class="language-btn" onclick="changeLanguage('hi')">हिन्दी</button>
-                </div>
-                
-                <!-- Timeline -->
-                <div class="timeline">
-                    <div class="timeline-step">
-                        <div class="timeline-content">
-                            <h3 data-i18n="onboarding.step1.title">Create Your Profile</h3>
-                            <p data-i18n="onboarding.step1.desc">Sign up and tell us about yourself, your craft, and your cultural heritage. This helps buyers connect with your story.</p>
-                            <div class="video-placeholder">
-                                <span data-i18n="onboarding.step1.video">Video Tutorial: Creating Your Profile</span>
-                            </div>
-                        </div>
-                        <div class="timeline-icon">1</div>
-                    </div>
-                    
-                    <div class="timeline-step">
-                        <div class="timeline-content">
-                            <h3 data-i18n="onboarding.step2.title">Showcase Your Work</h3>
-                            <p data-i18n="onboarding.step2.desc">Upload high-quality photos of your products with detailed descriptions, materials used, and traditional techniques.</p>
-                            <div class="video-placeholder">
-                                <span data-i18n="onboarding.step2.video">Video Tutorial: Product Photography Tips</span>
-                            </div>
-                        </div>
-                        <div class="timeline-icon">2</div>
-                    </div>
-                    
-                    <div class="timeline-step">
-                        <div class="timeline-content">
-                            <h3 data-i18n="onboarding.step3.title">Set Your Prices</h3>
-                            <p data-i18n="onboarding.step3.desc">We'll help you determine fair prices that reflect your skill, materials, and time while remaining competitive.</p>
-                            <div class="video-placeholder">
-                                <span data-i18n="onboarding.step3.video">Video Tutorial: Pricing Strategies</span>
-                            </div>
-                        </div>
-                        <div class="timeline-icon">3</div>
-                    </div>
-                    
-                    <div class="timeline-step">
-                        <div class="timeline-content">
-                            <h3 data-i18n="onboarding.step4.title">Connect With Buyers</h3>
-                            <p data-i18n="onboarding.step4.desc">Start receiving orders! Our platform handles payments and provides tools to manage your inventory and shipments.</p>
-                            <div class="video-placeholder">
-                                <span data-i18n="onboarding.step4.video">Video Tutorial: Order Management</span>
-                            </div>
-                        </div>
-                        <div class="timeline-icon">4</div>
-                    </div>
-                    
-                    <div class="timeline-step">
-                        <div class="timeline-content">
-                            <h3 data-i18n="onboarding.step5.title">Grow Your Business</h3>
-                            <p data-i18n="onboarding.step5.desc">Access our resources for artisans including workshops, material sourcing, and business development tools.</p>
-                            <div class="video-placeholder">
-                                <span data-i18n="onboarding.step5.video">Video Tutorial: Scaling Your Craft Business</span>
-                            </div>
-                        </div>
-                        <div class="timeline-icon">5</div>
-                    </div>
-                </div>
-                
-                <div class="text-center mt-10 mb-8">
-                    <a href="#" class="btn btn-primary" data-i18n="onboarding.apply">Start Your Application Now</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Artisan Connect</h3>
-                    <p data-i18n="footer.tagline">Bridging the gap between traditional craftsmanship and global markets.</p>
-                    <div class="social-links">
-                        <a href="#">📱</a>
-                        <a href="#">📘</a>
-                        <a href="#">📸</a>
-                        <a href="#">🐦</a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3 data-i18n="footer.quick_links">Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#" onclick="showPage('home')" data-i18n="nav.home">Home</a></li>
-                        <li><a href="#" onclick="showPage('marketplace')" data-i18n="nav.marketplace">Marketplace</a></li>
-                        <li><a href="#" onclick="showPage('onboarding')" data-i18n="nav.artisans">For Artisans</a></li>
-                        <li><a href="#" data-i18n="nav.about">About Us</a></li>
-                        <li><a href="#" data-i18n="nav.contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3 data-i18n="footer.support">Support</h3>
-                    <ul class="footer-links">
-                        <li><a href="#" data-i18n="footer.faq">FAQs</a></li>
-                        <li><a href="#" data-i18n="footer.shipping">Shipping Info</a></li>
-                        <li><a href="#" data-i18n="footer.returns">Returns & Exchanges</a></li>
-                        <li><a href="#" data-i18n="footer.privacy">Privacy Policy</a></li>
-                        <li><a href="#" data-i18n="footer.terms">Terms of Service</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3 data-i18n="footer.contact">Contact Us</h3>
-                    <ul class="footer-links">
-                        <li>🌐 info@artisanconnect.com</li>
-                        <li>📞 +1 (555) 123-4567</li>
-                        <li>📍 <span data-i18n="footer.address">123 Craft Lane, Artisan City</span></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                &copy; 2023 Artisan Connect. <span data-i18n="footer.rights">All rights reserved.</span>
+        <div class="section">
+            <h2>Objective</h2>
+            <p>To obtain a challenging position where I can contribute my skills and grow professionally.</p>
+        </div>
+        <div class="section">
+            <h2>Education</h2>
+            <ul>
+                <li><strong>Shree Shantiniketan English Medium School, Latur</strong> - 10th - 82.40%</li>
+                <li><strong>Rajarshi Shahu Mahavidyalaya, Latur</strong> - 12th Commerce - 85.50%</li>
+                <li><strong>Dayanand College of commerce, Latur</strong> - Bachelors of commerce</li>
+                <li><strong>IIM Bangalore</strong> - Bachelors of Business Administration</li>
+            </ul>
+        </div>
+        <div class="section">
+            <h2>Work Experience</h2>
+            <table>
+                <tr>
+                    <th>Role</th>
+                    <th>Organization</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>Tally Operator</td>
+                    <td>SRS Hydraulics</td>
+                    <td>
+                        <ul>
+                            <li>Maintained accounts in Tally Prime.</li>
+                            <li>Shifted the company accounts from ERP9 to Tally Prime.</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Teacher</td>
+                    <td>Shree Tally Classes (Five months)</td>
+                    <td>
+                        <ul>
+                            <li>Teaching students about Tally and operating basic Tally functions.</li>
+                            <li>Gave in-detail explanation and made short, revisable notes for students.</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="section">
+            <h2>Skills</h2>
+            <ul>
+                <li>Effective stress management</li>
+                <li>Capable of working in groups and lead groups</li>
+                <li>Capable of being calm in pressure</li>
+            </ul>
+        </div>
+        <div class="section">
+            <h2>Languages</h2>
+            <table>
+                <tr><th>Language</th><th>Proficiency</th></tr>
+                <tr><td>English</td><td>Fluent</td></tr>
+                <tr><td>Telugu</td><td>Fluent</td></tr>
+                <tr><td>Kannada</td><td>Fluent</td></tr>
+                <tr><td>Hindi</td><td>Fluent</td></tr>
+                <tr><td>Marathi</td><td>Fluent</td></tr>
+            </table>
+        </div>
+        <div class="section">
+            <h3>Hobbies</h3>
+            <ul>
+                <li>Reading books in leisure periods to pass time and calm down after a study session.</li>
+                <li>Making sketches and oil pastel paintings for improving concentration and focus.</li>
+                <li>Teaching paper crafts to children as a social skill and to improve my teaching skills.</li>
+                <li>Listening to music for relaxation during early mornings or late nights.</li>
+            </ul>
+        </div>
+        <div class="section">
+            <h3>Social Media</h3>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/shailasri-mukundi-384719321?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><span>🔗</span>LinkedIn</a>
+                <a href="https://www.instagram.com/shail_0207?igsh=djIxcWszOTgzMGxz" target="_blank"><span>📸</span>Instagram</a>
             </div>
         </div>
-    </footer>
-
-    <script src="script.js"></script>
-    <script src="i18n.js"></script>
+    </div>
 </body>
 </html>
